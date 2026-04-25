@@ -1,6 +1,6 @@
 # Automotive Color Codes Scraper & Data Pipeline
 
-A production-grade Python data pipeline that crawls a major automotive paint-code catalog, extracts **562,000+ raw color code records** across **50+ car manufacturers (1985–2025)**, and loads them into a MySQL database in two distinct schemas — raw and consolidated.
+A production-grade Python data pipeline that crawls **[automotivetouchup.com](https://www.automotivetouchup.com/)**, a major automotive paint-code catalog, extracts **562,000+ raw color code records** across **50+ car manufacturers (1985–2025)**, and loads them into a MySQL database in two distinct schemas — raw and consolidated.
 
 Built to feed a downstream vehicle customization SaaS that needed a structured, queryable paint-code dataset without a commercial API.
 
@@ -21,7 +21,7 @@ This pipeline was built to:
 ## Architecture Overview
 
 ```
-[Target Website]
+[automotivetouchup.com]
       │
       ▼
  scraper.py          ← Multi-level crawler with anti-blocking & resume support
@@ -233,7 +233,7 @@ python import_consolidated_to_db.py
 ## Challenges & Engineering Decisions
 
 **Challenge: Rate limiting and bot detection**
-The target applies rate limits and monitors request patterns. Solved with rotating user-agents, randomized delays between every request, and an automatic 60–90s cool-down on 429 responses — keeping the scraper below the detection threshold over multi-hour runs.
+automotivetouchup.com applies rate limits and monitors request patterns. Solved with rotating user-agents, randomized delays between every request, and an automatic 60–90s cool-down on 429 responses — keeping the scraper below the detection threshold over multi-hour runs.
 
 **Challenge: Unreliable URL structures**
 Not every maker follows the same URL pattern. The touch-up URL resolver first parses anchor tags looking for a canonical 2-segment path. If that fails, it falls back to a derived slug-based URL and logs a warning — the scrape continues rather than failing on a single maker.
