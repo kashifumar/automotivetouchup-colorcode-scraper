@@ -284,6 +284,3 @@ automotivetouchup/
 **Kashif Umar** — Backend Developer
 
 Specializing in data pipelines, web scraping, API development, and cloud-hosted database systems.
-
-- LinkedIn: [linkedin.com/in/kashif-umar](https://www.linkedin.com/in/kashif-umar/)
-- X (Twitter): [x.com/kashif_umar](https://x.com/kashif_umar)
